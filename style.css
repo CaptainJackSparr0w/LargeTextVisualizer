@@ -14,13 +14,30 @@
 
 .button{
     background-color: gray;
+    border-radius: 30px;
+    width: 30%;
+    border:none;
+}
+.button:hover{
+    background-color: darkgreen;
+    border-radius: 30px;
+    width: 30%;
 }
 .highlightedSpan{
     color: rgb(54, 198, 246);
+    border-radius: 10px;
+    /* border: solid rgb(54, 198, 246) 1px ; */
+    background-color: rgba(54, 198, 246, 0.195);
+
+    transition: background-color 0.5s ease;
+    transition: color 0.5s ease;
 }
 .dimSpan{
     color: rgb(52, 51, 51);
-    font-size: 28pt;
+    font-size: 30pt;
+
+    transition: background-color 0.5s ease;
+    transition: color 0.5s ease;
 }
 .mainDiv{
     font-family: "Nunito", sans-serif;
@@ -28,4 +45,11 @@
     /* font-weight: <weight>; */
     font-style: normal;
     font-size: 30pt;
+
+    /* width: 80vw;  */
+    height: 90vh; 
+    max-height: 90vh;
+    overflow: auto;
+    scrollbar-width: none;
 }
+

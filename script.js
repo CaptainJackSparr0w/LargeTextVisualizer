@@ -2,9 +2,13 @@ const textArea = document.getElementById('textArea');
 const button = document.getElementById('showText');
 const div = document.getElementById('stage');
 
+textArea.value = 'https://www.reddit.com/r/NevilleGoddard/comments/1bg9cea/manifested_stolen_purse_being_found_instantly/';
 const spans = new Array();
 let timer;
 let index = 0;
+let tick = 800;
+
+
 
 button.addEventListener("click", ShowText);
 
@@ -25,6 +29,17 @@ async function ShowText()
     console.log(arr.length);
     for(let i = 0; i < arr.length; i++)
     {
+        if(i == 0)
+        {
+            let temp = 16;
+            while(temp > 0)
+            {
+                const span = document.createElement('span');
+                span.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ";
+                div.appendChild(span);
+                temp--;
+            }
+        }
         const span = document.createElement("span");
         span.textContent = arr[i];
         span.className = "dimSpan";
@@ -41,7 +56,7 @@ async function ShowText()
     if(timer)
         clearInterval(timer);
 
-    timer = setInterval(CycleHighlight, 1000);
+    timer = setInterval(CycleHighlight, tick);
     
 }
 
@@ -54,11 +69,13 @@ function CycleHighlight()
             spans[index-1].className = 'dimSpan';
 
         index++;
+        div.scrollTop += 4;
     }
     else
     {
         spans[index-1].className = 'dimSpan';
         index = 0;
+        div.scrollTop = 0;
     }
 }
 
@@ -81,7 +98,8 @@ async function getRedditPostText(url) {
         
         // Return the post text
         return postText;
-    } catch (error) {
+    } 
+    catch (error) {
         console.error('Error:', error.message);
     }
 }
